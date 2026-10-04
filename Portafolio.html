@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Desarrollador Web para Negocios y PYMES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+ 
+
+:root{
+  --bg:#FBF8F2; --bg-alt:#F1ECDF; --bg-raise:#FFFFFF;
+  --ink:#1E241E; --ink-soft:#57604F; --line:#D9D0BC;
+  --primary:#12433A; --primary-ink:#EFF6F1;
+  --accent:#C97A2B; --accent-ink:#FBF8F2;
+  --font-display:'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12180F; --bg-alt:#1A2117; --bg-raise:#1E261A;
+    --ink:#F1ECDF; --ink-soft:#AEB7A6; --line:#333B2E;
+    --primary:#7FC6A8; --primary-ink:#12180F;
+    --accent:#E3A857; --accent-ink:#12180F;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12180F; --bg-alt:#1A2117; --bg-raise:#1E261A;
+  --ink:#F1ECDF; --ink-soft:#AEB7A6; --line:#333B2E;
+  --primary:#7FC6A8; --primary-ink:#12180F;
+  --accent:#E3A857; --accent-ink:#12180F;
+}
+*{box-sizing:inherit; margin:0; padding:0;}
+html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth;}
+body{background:var(--bg); color:var(--ink); font-family:var(--font-body); line-height:1.55; -webkit-font-smoothing:antialiased;}
+img,svg{max-width:100%; display:block;}
+a{color:inherit;}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+@media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important;} }
+
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+section{padding:88px 0;}
+@media (max-width:720px){ section{padding:56px 0;} }
+
+h1,h2,h3{font-family:var(--font-display); font-weight:600; line-height:1.1; letter-spacing:-0.01em;}
+h2{font-size:clamp(28px,4vw,40px); margin-bottom:12px;}
+.kicker{font-family:var(--font-body); font-size:14px; color:var(--ink-soft); max-width:52ch; margin-bottom:40px;}
+p{color:var(--ink-soft); max-width:62ch;}
+
+/* Nav */
+header{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+header .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:18px; padding-bottom:18px;}
+.brand{font-family:var(--font-display); font-weight:600; font-size:19px;}
+.brand span{color:var(--accent);}
+nav.links{display:flex; gap:28px; font-size:15px;}
+nav.links a{text-decoration:none; color:var(--ink-soft);}
+nav.links a:hover{color:var(--ink);}
+@media (max-width:720px){ nav.links{display:none;} }
+.btn{display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:3px; font-size:15px; font-weight:600; text-decoration:none; border:1px solid transparent; cursor:pointer;}
+.btn-primary{background:var(--accent); color:var(--accent-ink);}
+.btn-primary:hover{background:color-mix(in srgb, var(--accent) 85%, black);}
+.btn-outline{border-color:var(--line); color:var(--ink);}
+.btn-outline:hover{border-color:var(--ink-soft);}
+
+/* Hero */
+.hero .wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; padding-top:64px; padding-bottom:64px;}
+@media (max-width:860px){ .hero .wrap{grid-template-columns:1fr;} }
+.hero h1{font-size:clamp(34px,5.4vw,58px); margin-bottom:22px;}
+.hero p.lead{font-size:18px; margin-bottom:32px;}
+.hero .ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:28px;}
+.hero .note{font-size:13px; color:var(--ink-soft);}
+.blueprint{border:1px solid var(--line); border-radius:6px; background:var(--bg-raise); padding:22px;}
+.blueprint .barline{display:flex; gap:6px; margin-bottom:16px;}
+.blueprint .barline i{width:9px; height:9px; border-radius:50%; border:1.4px solid var(--line);}
+.blueprint svg{stroke:var(--primary);}
+
+/* Value strip */
+.values{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--bg-alt);}
+.values .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:0; padding:0;}
+.values .item{padding:32px 20px; border-left:1px solid var(--line);}
+.values .item:first-child{border-left:none;}
+.values svg{width:22px; height:22px; stroke:var(--accent); fill:none; stroke-width:1.6; margin-bottom:12px;}
+.values p{font-size:14.5px; color:var(--ink); max-width:none;}
+@media (max-width:820px){ .values .wrap{grid-template-columns:1fr 1fr;} .values .item:nth-child(3){border-left:none;} .values .item{border-bottom:1px solid var(--line);} }
+@media (max-width:520px){ .values .wrap{grid-template-columns:1fr;} .values .item{border-left:none;} }
+
+/* Pricing */
+.plans{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:8px;}
+@media (max-width:900px){ .plans{grid-template-columns:1fr;} }
+.plan{border:1px solid var(--line); border-radius:6px; background:var(--bg-raise); padding:30px 26px; display:flex; flex-direction:column;}
+.plan.feat{border-color:var(--accent); border-width:2px; box-shadow:0 0 0 1px var(--accent);}
+.plan .tag{font-size:12.5px; color:var(--accent); font-weight:600; margin-bottom:6px;}
+.plan h3{font-size:22px; margin-bottom:8px;}
+.plan .desc{font-size:14.5px; margin-bottom:18px; min-height:44px;}
+.plan .price{font-family:var(--font-display); font-size:32px; margin-bottom:4px;}
+.plan .price small{font-family:var(--font-body); font-size:14px; font-weight:500; color:var(--ink-soft);}
+.plan .from{font-size:12.5px; color:var(--ink-soft); margin-bottom:22px;}
+.plan ul{list-style:none; margin-bottom:26px; flex-grow:1;}
+.plan li{font-size:14.5px; color:var(--ink-soft); padding:7px 0; border-top:1px solid var(--line); display:flex; gap:10px;}
+.plan li:first-child{border-top:none;}
+.plan li svg{width:14px; height:14px; stroke:var(--primary); flex-shrink:0; margin-top:3px;}
+.plans-note{font-size:13.5px; color:var(--ink-soft); margin-top:22px;}
+
+/* Process */
+.steps{margin-top:8px; border-top:1px solid var(--line);}
+.step{display:grid; grid-template-columns:64px 1fr; gap:20px; padding:26px 0; border-bottom:1px solid var(--line);}
+.step .n{font-family:var(--font-display); font-size:26px; color:var(--accent);}
+.step h3{font-size:18px; margin-bottom:6px;}
+.step p{font-size:14.5px;}
+
+/* FAQ */
+.faq{max-width:760px;}
+details{border-bottom:1px solid var(--line); padding:18px 0;}
+summary{cursor:pointer; font-weight:600; font-size:16px; list-style:none; display:flex; justify-content:space-between; gap:16px;}
+summary::-webkit-details-marker{display:none;}
+summary:after{content:'+'; color:var(--accent); font-size:20px; flex-shrink:0;}
+details[open] summary:after{content:'–';}
+details p{margin-top:12px; font-size:14.5px;}
+
+/* CTA band */
+.ctaband{background:var(--primary); color:var(--primary-ink);}
+.ctaband h2{color:var(--primary-ink);}
+.ctaband p{color:color-mix(in srgb, var(--primary-ink) 78%, transparent); margin-bottom:30px;}
+.ctaband .btn-outline{border-color:color-mix(in srgb, var(--primary-ink) 40%, transparent); color:var(--primary-ink);}
+.ctaband .btn-primary{background:var(--accent); color:var(--accent-ink);}
+
+/* pie */
+footer{padding:40px 0; border-top:1px solid var(--line);}
+footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
+footer .brand{font-size:16px;}
+footer p{font-size:13px; color:var(--ink-soft);}
+
+/* WhatsApp */
+.float-wa{position:fixed; bottom:calc(22px + env(safe-area-inset-bottom,0px)); right:22px; z-index:30; background:#12433A; color:#EFF6F1; width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,.25); text-decoration:none;}
+.float-wa svg{width:26px; height:26px; stroke:#EFF6F1; fill:none; stroke-width:1.8;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand"> Jael Acosta <span>·</span> Desarrollo Web</div>
+    <nav class="links">
+      <a href="#paquetes">Paquetes</a>
+      <a href="#proceso">Cómo trabajo</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="btn btn-primary" href="https://wa.me/5216632120579?text=Hola%2C%20quiero%20cotizar%20un%20sitio%20web%20para%20mi%20negocio" target="_blank" rel="noopener">Escríbeme</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Desarrollador Web para Negocios y PYMES</h1>
+      <p class="lead">Diseño y construyo sitios web que hacen que tus clientes te encuentren, confíen en ti y te contacten. Sin tecnicismos, con precios claros desde el primer mensaje.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="https://wa.me/5216632120579?text=Hola%2C%20quiero%20cotizar%20un%20sitio%20web%20para%20mi%20negocio" target="_blank" rel="noopener">Cotiza tu proyecto por WhatsApp</a>
+        <a class="btn btn-outline" href="#paquetes">Ver paquetes y precios</a>
+      </div>
+      <p class="note">Respondo personalmente. Primera plática sin costo ni compromiso.</p>
+    </div>
+    <div class="blueprint" aria-hidden="true">
+      <div class="barline"><i></i><i></i><i></i></div>
+      <svg viewBox="0 0 320 220" fill="none" stroke-width="1.5">
+        <rect x="8" y="8" width="304" height="204" rx="4"/>
+        <line x1="8" y1="46" x2="312" y2="46"/>
+        <rect x="24" y="62" width="130" height="70" rx="2"/>
+        <line x1="170" y1="62" x2="296" y2="62"/>
+        <line x1="170" y1="80" x2="270" y2="80"/>
+        <line x1="170" y1="98" x2="290" y2="98"/>
+        <rect x="170" y="112" width="70" height="20" rx="2"/>
+        <line x1="24" y1="150" x2="296" y2="150"/>
+        <line x1="24" y1="164" x2="240" y2="164"/>
+        <line x1="24" y1="178" x2="270" y2="178"/>
+        <line x1="24" y1="192" x2="200" y2="192"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="values">
+  <div class="wrap">
+    <div class="item">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16v12H8l-4 4V4z"/></svg>
+      <p>Comunicación directa conmigo, sin intermediarios ni call centers.</p>
+    </div>
+    <div class="item">
+      <svg viewBox="0 0 24 24"><path d="M4 7l8-4 8 4v10l-8 4-8-4V7z"/><path d="M4 7l8 4 8-4"/><path d="M12 11v10"/></svg>
+      <p>Presupuesto claro desde el inicio: sabes qué pagas y por qué.</p>
+    </div>
+    <div class="item">
+      <svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+      <p>Sitios rápidos y que se ven bien en cualquier celular.</p>
+    </div>
+    <div class="item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+      <p>Acompañamiento y soporte después de que tu sitio está en línea.</p>
+    </div>
+  </div>
+</div>
+
+<section id="paquetes">
+  <div class="wrap">
+    <h2>Paquetes y precios</h2>
+    <p class="kicker">Precios de referencia en pesos mexicanos. Cada negocio es distinto, así que la cotización final se ajusta a lo que tu proyecto realmente necesita — sin cobrar de más por lo que no vas a usar.</p>
+    <div class="plans">
+      <div class="plan">
+        <div class="tag">Para empezar</div>
+        <h3>Landing Page</h3>
+        <p class="desc">Una página enfocada en un solo objetivo: que te llamen, te escriban o compren.</p>
+        <div class="price">$4,000 <small>MXN</small></div>
+        <div class="from">precio desde · entrega en 5–7 días</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Diseño responsivo a medida</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Botón directo a WhatsApp</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Formulario de contacto</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>SEO básico y velocidad optimizada</li>
+        </ul>
+        <a class="btn btn-outline" href="https://wa.me/5216632120579?text=Quiero%20cotizar%20una%20Landing%20Page" target="_blank" rel="noopener">Cotizar este paquete</a>
+      </div>
+      <div class="plan feat">
+        <div class="tag">Más elegido</div>
+        <h3>Sitio Corporativo</h3>
+        <p class="desc">Presencia completa: inicio, servicios, nosotros, contacto y lo que tu negocio necesite mostrar.</p>
+        <div class="price">$9,500 <small>MXN</small></div>
+        <div class="from">precio desde · entrega en 2–3 semanas</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Hasta 5 secciones o páginas</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Mapa, redes sociales y galería</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Panel para editar textos e imágenes</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Capacitación de 1 hora incluida</li>
+        </ul>
+        <a class="btn btn-primary" href="https://wa.me/5216632120579?text=Quiero%20cotizar%20un%20Sitio%20Corporativo" target="_blank" rel="noopener">Cotizar este paquete</a>
+      </div>
+      <div class="plan">
+        <div class="tag">Para vender en línea</div>
+        <h3>Tienda en Línea</h3>
+        <p class="desc">Catálogo, carrito y cobros integrados para vender tus productos sin depender de redes sociales.</p>
+        <div class="price">$19,000 <small>MXN</small></div>
+        <div class="from">precio desde · entrega en 3–4 semanas</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Catálogo con hasta 30 productos</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Carrito y pasarela de pago</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Panel de pedidos e inventario</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Capacitación de 2 horas incluida</li>
+        </ul>
+        <a class="btn btn-outline" href="https://wa.me/5216632120579?text=Quiero%20cotizar%20una%20Tienda%20en%20L%C3%ADnea" target="_blank" rel="noopener">Cotizar este paquete</a>
+      </div>
+    </div>
+    <p class="plans-note">¿Ya tienes un sitio y solo necesitas cambios o mantenimiento? Planes de soporte mensual desde $900 MXN/mes. Dominio y hosting se cotizan aparte — te asesoro sin costo para elegir la mejor opción.</p>
+  </div>
+</section>
+
+<section id="proceso" style="background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <h2>Cómo trabajo</h2>
+    <p class="kicker">Cuatro pasos, sin vueltas. Sabes en todo momento en qué va tu proyecto.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div><h3>Me cuentas tu negocio</h3><p>Una plática breve, por WhatsApp o llamada, para entender qué necesitas y a quién le vendes.</p></div></div>
+      <div class="step"><div class="n">2</div><div><h3>Recibes tu cotización</h3><p>Te envío una propuesta por escrito con precio cerrado, entregables y fecha de entrega.</p></div></div>
+      <div class="step"><div class="n">3</div><div><h3>Diseño y desarrollo</h3><p>Construyo tu sitio y te muestro avances reales para que des tu opinión antes de que esté listo.</p></div></div>
+      <div class="step"><div class="n">4</div><div><h3>Entrega y capacitación</h3><p>Publicamos tu sitio y te enseño a hacer cambios simples tú mismo, sin depender de mí para todo.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="preguntas">
+  <div class="wrap">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq">
+      <details>
+        <summary>¿Cuánto tiempo tarda mi sitio web?</summary>
+        <p>Depende del paquete: entre 5 días para una landing page y hasta 4 semanas para una tienda en línea. La fecha exacta queda por escrito en tu cotización.</p>
+      </details>
+      <details>
+        <summary>¿Necesito tener listos mis textos y fotos antes de empezar?</summary>
+        <p>No es obligatorio. Puedo ayudarte a redactar y organizar el contenido si aún no lo tienes definido.</p>
+      </details>
+      <details>
+        <summary>¿El precio incluye dominio y hosting?</summary>
+        <p>No, se cotizan aparte porque cada negocio tiene necesidades distintas. Te oriento sin costo para que elijas la opción que más te convenga.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa si no me gusta cómo va quedando el diseño?</summary>
+        <p>Cada paquete incluye rondas de ajustes durante el desarrollo. No se entrega nada hasta que estés conforme.</p>
+      </details>
+      <details>
+        <summary>¿Das soporte después de entregar el sitio?</summary>
+        <p>Sí. Puedes contratar un plan de mantenimiento mensual o pedirme soporte puntual cuando lo necesites.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="ctaband">
+  <div class="wrap" style="text-align:center;">
+    <h2>¿Listo para tener un sitio que trabaje por tu negocio?</h2>
+    <p style="margin:0 auto 30px;">Cuéntame qué necesitas y te respondo con una idea clara de tiempos y precio, el mismo día.</p>
+    <div class="ctas" style="justify-content:center;">
+      <a class="btn btn-primary" href="https://wa.me/5216632120579?text=Hola%2C%20quiero%20cotizar%20un%20sitio%20web%20para%20mi%20negocio" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+      <a class="btn btn-outline" href="mailto:Jaeljacal@gmail.com">Enviar un correo</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"> Jael Acosta · Desarrollo Web</div>
+    <p>Tijuana, B.C. ·  Jaeljacal@gmail.com · © 2026</p>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/5216632120579?text=Hola%2C%20quiero%20cotizar%20un%20sitio%20web%20para%20mi%20negocio" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-12.4 7.5L3 20l1.1-5.4A8.5 8.5 0 1121 11.5z"/><path d="M8.5 10.5c.3 2.5 2.5 4.7 5 5"/></svg>
+</a>
+
+</body>
+</html>
